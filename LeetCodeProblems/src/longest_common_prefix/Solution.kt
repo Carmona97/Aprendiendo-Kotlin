@@ -22,11 +22,29 @@ strs[i] consists of only lowercase English letters.*/
 
 fun main() {
 
+    val strs = arrayOf("")
+    println(longestCommonPrefix(strs))
 }
 
 fun longestCommonPrefix(strs: Array<String>): String {
+    if (strs.isEmpty()) return ""
 
     var resultPrefix = StringBuilder()
+    var prefixLetterIndex = 0
+
+    while (true) {
+
+        if (strs.any { it.length <= prefixLetterIndex }) break
+
+        val currentChar = strs[0][prefixLetterIndex]
+
+        if (strs.all { it[prefixLetterIndex] == currentChar }) {
+            resultPrefix.append(currentChar)
+            prefixLetterIndex++
+        } else {
+            break
+        }
+    }
 
     return resultPrefix.toString()
 }
