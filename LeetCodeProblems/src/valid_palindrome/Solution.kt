@@ -30,7 +30,7 @@ Constraints:
 s consists only of printable ASCII characters.*/
 
 fun main() {
-    println(isPalindrome(""))
+    println(isPalindromeOptimal("A man, a plan, a canal: Panama"))
 }
 fun isPalindrome(s: String): Boolean {
 
@@ -56,4 +56,25 @@ fun isPalindrome(s: String): Boolean {
         return true
     }
     return false
+}
+
+fun isPalindromeOptimal(s: String): Boolean {
+    var left = 0
+    var right = s.length - 1
+    while (left < right) {
+        // for skipping spaces and any additional special chars from left
+        while(left < right && !s[left].isLetterOrDigit()){
+            left++
+        }
+        // for skipping spaces and any additional special chars from right
+        while(right > left && !s[right].isLetterOrDigit()){
+            right--
+        }
+        if(s[left].lowercaseChar() != s[right].lowercaseChar()){
+            return false
+        }
+        right--
+        left++
+    }
+    return true
 }
