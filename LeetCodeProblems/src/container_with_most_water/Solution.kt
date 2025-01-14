@@ -29,7 +29,8 @@ n == height.length
 0 <= height[i] <= 104*/
 
 fun main() {
-    var height:IntArray = intArrayOf(1,1)
+    var height:IntArray = intArrayOf(1,8,6,2,5,4,8,3,7)
+    println(maxArea(height))
 
 }
 
@@ -37,9 +38,22 @@ fun maxArea(height: IntArray): Int {
     var left:Int= 0
     var right:Int = height.size - 1
     var maxArea:Int = 0
+    var currentArea:Int = 0
 
     while(left<right){
-
+        if(height[left]<height[right]){
+            currentArea = height[left] * (right - left)
+            if (currentArea>=maxArea){
+                maxArea = currentArea;
+            }
+            left++
+        }else{
+            currentArea = height[right] * (right - left)
+            if (currentArea>=maxArea){
+                maxArea = currentArea;
+            }
+            right--
+        }
     }
     return maxArea
 }
