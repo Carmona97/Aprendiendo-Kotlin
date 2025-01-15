@@ -3,8 +3,6 @@ package longest_substring_no_repeating_char
 substring
  without repeating characters.
 
-
-
 Example 1:
 
 Input: s = "abcabcbb"
